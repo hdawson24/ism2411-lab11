@@ -1,7 +1,6 @@
 print("---Exercise 1 ---")
 customer = {
     "name": "Alice",  # Key : Value , 
-    "Name": "Not Alice",
     "email": "alice@example.com",
     "tier": "gold",
     "ytd_spend": 12400,
@@ -11,6 +10,7 @@ print(customer["name"])
 print(customer["email"])
 print(customer["tier"])
 print(customer["ytd_spend"])
+print(customer)
 
 
 print("--- Exercise 2 ---")
@@ -18,7 +18,7 @@ customer['phone'] = '555-5555' # Adding a new key-value pair to the dictionary
 print(customer)
 customer['tier'] = 'platinum' # Updating the value of an existing key
 print(customer)
-del customer['Name'] # Deleting  a key-value pair from the dictionary 
+del customer['email'] # Deleting  a key-value pair from the dictionary 
 print(customer)
 
 print(customer.get('ytd_spend', 0))
@@ -40,6 +40,8 @@ for key, value in customer.items():
 for something in customer:
     print(something, customer [something]) 
 
+# The difference between the two for loops is that the .items() method makes it quicker and easier to find my items and it allows me to print them nice and neatly.
+
 
 print("--- Exercise 5 ---")
 tier_discounts = {"bronze": 0, "silver": 0.05, "gold": 0.1, "platinum": 0.15}
@@ -60,7 +62,10 @@ customers = [
     {"name": "David", "tier": "bronze", "ytd_spend": 450},
 ]
 
-
+for record in customers:
+    rate = tier_discounts.get(record["tier"], 0)
+    discount = 300 * rate
+    print(f"{record["name"]} ({record["tier"]}): ${discount:.2f} off a $300 purchase.")
 
 # --- Exercise 7: Nested catalog ---
 print(" --- Exercise 7 ---")
@@ -80,8 +85,18 @@ for product_name, product_details in catalog.items():
 
 # --- Exercise 8: Sales by region ---
 print("--- Exercise 8 ---")
-transactions = {
+transactions = [
     {"region": "South", "amount": 300},
     {"region": "North", "amount": 150},
     {"region": "South", "amount": 200}
-}
+]
+
+totals = {}
+
+for transaction in transactions:
+    region = transaction.get("region")
+    amount = transaction.get("amount", 0)
+    totals[region] = totals.get(region, 0) + amount
+
+for region, total in totals.items():
+    print(f"{region}: {total}")
