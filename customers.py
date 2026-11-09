@@ -1,3 +1,7 @@
+# Reflection Exercise
+# 1: If I worked at someplace like a doctors office and there was no name on file I would use the .get() method so that it would return the no name on file and then I would be able to ask the patient their name. My rule of thumb for choosing would be if I need missing info and dont have it then Id use .get() but if I do not need it and I just need to see it is not working then I would use the try and except method.
+# 2: This pattern reminds me of having to manually input every single purchase and region into excel and then add it all up by hand, for large data sets python and a for loop would work way better because it runs it so much faster and it automates it for me.
+
 print("---Exercise 1 ---")
 customer = {
     "name": "Alice",  # Key : Value , 
